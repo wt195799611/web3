@@ -15,7 +15,7 @@ zkSync_SpokePool = w3.eth.contract(address=zkSync_SpokePool_address, abi=zkSync_
 
 # 定义交易参数
 transaction_date = {
-    'from': '0x27D8C50F4047c14D5682aC033a006E68d6a51e55',
+    'from': 'useraddress',
     'value': w3.to_wei(1, 'ether'),  # 存款金额
     'gas': 2000000,
     'gasPrice': w3.to_wei('30', 'gwei'),
@@ -40,9 +40,9 @@ with open(r'F:\web3\Interactive_plan\exchange_amount.txt', 'r') as f:
     exchange_amount = int(f.read().strip())
 
 # 定义 deposit 函数的参数
-params = [f'deposit(0x27D8C50F4047c14D5682aC033a006E68d6a51e55, 0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91, {amount_uint256}, {chainID_uint256}, {relayFeePct_uint64}, {timestamp_uint32}, b"", {maxCount_uint256})']
+params = [f'deposit(useraddress, 0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91, {amount_uint256}, {chainID_uint256}, {relayFeePct_uint64}, {timestamp_uint32}, b"", {maxCount_uint256})']
 
-private_key = "0xcad4d927db54c07fb68b0b6318455cb5f8916e78a2bb7647664589469251a781"
+private_key = "userPrivate"
 
 # 构造交易
 transaction = zkSync_SpokePool.functions.deposit(*params).build_transaction(transaction_date)
